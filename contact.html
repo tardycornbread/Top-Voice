@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Top Voices</title>
+  <meta name="description" content="TopVoices.ai – Integrated Marketing, PR & Paid Media powered by AI and human creativity." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+  <script defer src="js/main.js"></script>
+
+<script defer src="js/contact.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html">Top Voices</a>
+  <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">Menu</button>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="industry.html">Industry</a>
+    <a href="clients.html">Client</a>
+    <a href="platform.html">Platform</a>
+    <a href="about.html">About us</a>
+    <a class="cta" href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main class="container">
+  <h1 class="kicker">Talk to us</h1>
+  <div class="rule"></div>
+
+  <div class="contact-wrap">
+    <img src="assets/talk to us.jpg" alt="" class="contact-image"/>
+    <form id="contactForm" class="form card" novalidate>
+      <div class="grid-2">
+        <label>First Name
+          <input name="firstName" required autocomplete="given-name" />
+        </label>
+        <label>Last Name
+          <input name="lastName" required autocomplete="family-name" />
+        </label>
+      </div>
+      <label>Email
+        <input type="email" name="email" required autocomplete="email" />
+      </label>
+      <label>What services are you most interested in?
+        <select name="services" required>
+          <option value="">Select one</option>
+          <option>Influencer Marketing</option>
+          <option>PR</option>
+          <option>Paid Media</option>
+          <option>Livestream Commerce</option>
+          <option>Full-Stack Growth</option>
+        </select>
+      </label>
+      <label>How did you hear about us?
+        <input name="referrer" />
+      </label>
+      <label>Anything else we should know about?
+        <textarea name="message" rows="5"></textarea>
+      </label>
+      <button class="btn" type="submit">Submit</button>
+      <p id="formStatus" class="mute" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="brand">Top Voices</div>
+      <p class="mute">Amplify Your Impact. Integrated Marketing, PR & Paid Media powered by AI and human creativity.</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="industry.html">Industry</a>
+      <a href="clients.html">Client</a>
+      <a href="platform.html">Platform</a>
+      <a href="about.html">About us</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="mute">© 2025 TopVoices.ai • Built for the digital age.</div>
+  </div>
+</footer>
+
+</body>
+</html>

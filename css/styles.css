@@ -151,7 +151,6 @@ img{max-width:100%; height:auto; display:block}
 
 
 }
-.industry-body p{margin-bottom:.8rem}
 
 .clients-rows .row{display:grid; grid-template-columns:repeat(4, 1fr); gap:1.2rem; padding:1rem 0; border-bottom:1px solid var(--border)}
 .clients-rows .row:last-child{border-bottom:none}
@@ -465,6 +464,7 @@ input:focus, select:focus, textarea:focus{outline:2px solid var(--accent)}
 }
 
 .industry-body p {
+  margin-bottom:.8rem;
   font-family: "Outfit", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;

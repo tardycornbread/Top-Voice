@@ -1,9 +1,24 @@
+/* =========================================================
+   Top Voices — Clean Consolidated Stylesheet (Playfair h3)
+   =========================================================
+   0) Tokens & Reset
+   1) Base Typography & Elements
+   2) Utilities
+   3) Header / Navigation
+   4) Components: Hero, Buttons, Split, Cards & Grids
+   5) Sections: About, Clients, Platform, Contact, Footer
+   6) Page-specific tweaks (typography parity)
+   7) Responsive (1000, 900, 800, 700)
+   8) Preference queries
+   ========================================================= */
+
+/* ========== 0) TOKENS & RESET ========== */
 :root{
   --bg:#f4efe7;
   --ink:#1a1a1a;
   --muted:#6b6b6b;
   --brand:#0f172a;
-  --accent:#5c7cff; /* blue accent like Figma screenshots */
+  --accent:#5c7cff;
   --card:#ffffff;
   --border:#e6ddd0;
   --radius:16px;
@@ -11,8 +26,8 @@
   --shadow:0 6px 18px rgba(0,0,0,.06);
 }
 
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
 body{
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color:var(--ink);
@@ -20,446 +35,355 @@ body{
   line-height:1.6;
 }
 
-h1,h2,h3{font-family:"Playfair Display", Georgia, serif; line-height:1.2; margin:0 0 .6rem}
-h1{font-size:clamp(2rem, 2.6vw + 1rem, 3.2rem)}
-h2{font-size:clamp(1.4rem, 1.4vw + 1rem, 2rem)}
-h3{font-size:1.125rem}
-p{margin:.25rem 0 1rem}
-a{color:inherit; text-decoration:none}
-img{max-width:100%; height:auto; display:block}
-
-.container{max-width:1100px; margin:0 auto; padding:2rem 1rem}
-.container.narrow{max-width:900px}
-.mute{color:var(--muted)}
-.kicker{
-   font-family: "Playfair Display", Georgia, serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: italic;
-  color: #3b63d6;
+/* ========== 1) BASE TYPOGRAPHY & ELEMENTS ========== */
+h1,h2,h3{
+  font-family:"Playfair Display", Georgia, serif;
+  line-height:1.2;
+  margin:0 0 .6rem;
 }
-.rule{height:1px; background:var(--border); margin: .75rem 0 1.25rem}
+h1{ font-size:clamp(2rem, 2.6vw + 1rem, 3.2rem); }
+h2{ font-size:clamp(1.4rem, 1.4vw + 1rem, 2rem); }
+h3{ font-size:1.125rem; }
 
+p{ margin:.25rem 0 1rem; }
+a{ color:inherit; text-decoration:none; }
+img, video, canvas, svg{ max-width:100%; height:auto; display:block; }
+
+/* ========== 2) UTILITIES ========== */
+.container{ max-width:1100px; margin:0 auto; padding:2rem 1rem; }
+.container.narrow{ max-width:900px; }
+.mute{ color:var(--muted); }
+.kicker{
+  font-family:"Playfair Display", Georgia, serif;
+  font-optical-sizing:auto;
+  font-weight:400;
+  font-style:italic;
+  color:#3b63d6;
+}
+.rule{ height:1px; background:var(--border); margin:.75rem 0 1.25rem; }
+
+/* ========== 3) HEADER / NAVIGATION ========== */
 .site-header{
   position:sticky; top:0; z-index:10;
   display:flex; align-items:center; gap:1rem;
-  padding:1rem; background:rgba(244,239,231,.9); border-bottom:1px solid var(--border);
+  padding:1rem;
+  background:rgba(244,239,231,.9);
+  border-bottom:1px solid var(--border);
   backdrop-filter:saturate(1.1) blur(4px);
 }
 .brand{
-  font-family: "Bodoni Moda", serif;
-  font-size: 2rem;
-  font-optical-sizing: auto;
-  font-weight: 400; 
-  font-style: normal;
+  font-family:"Bodoni Moda", serif;
+  font-size:2rem;
+  font-optical-sizing:auto;
+  font-weight:400;
+  font-style:normal;
 }
-.nav-toggle{display:none; background:none; border:1px solid var(--border); border-radius:999px; font-size:1rem; padding:.35rem .6rem}
-.site-nav{margin-left:auto; display:flex; gap:1rem; align-items:center}
-.site-nav a{padding:.5rem .75rem; border-radius:999px}
-.site-nav a.cta{background:var(--brand); color:#fff}
-.site-nav a.active{outline:2px solid var(--brand)}
-
-@media (max-width: 800px){
-  .nav-toggle{display:block}
-  .site-nav{display:none; flex-direction:column; position:absolute; right:1rem; top:64px; background:var(--bg); padding:1rem; border:1px solid var(--border); border-radius:12px; box-shadow:var(--shadow)}
-  .site-nav.open{display:flex}
+.nav-toggle{
+  display:none;
+  background:none;
+  border:1px solid var(--border);
+  border-radius:999px;
+  font-size:1rem;
+  padding:.35rem .6rem;
 }
-
-/* Hero (video) */
-.hero{position:relative; min-height:60vh; display:grid; place-items:center; border-bottom:1px solid var(--border); overflow:hidden;
-  background:url("../assets/hero-poster.jpg") center/cover no-repeat;}
-  
-.hero {
-  position: relative;
-  height: 100vh; /* full screen height */
-  display: grid;
-  place-items: center;
-  border-bottom: 1px solid var(--border);
-  overflow: hidden;
+.site-nav{
+  margin-left:auto;
+  display:flex; gap:1rem; align-items:center;
 }
+.site-nav a{ padding:.5rem .75rem; border-radius:999px; }
+.site-nav a.cta{ background:var(--brand); color:#fff; }
+.site-nav a.active{ outline:2px solid var(--brand); }
 
-.hero-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center -10%; /* shift upward by 10% */
-  filter: contrast(1.05) saturate(1.15) brightness(0.95);
-  transform: scale(1.05);
+/* ========== 4) COMPONENTS ========== */
+
+/* Hero */
+.hero{
+  position:relative;
+  min-height:60vh;
+  height:100vh;
+  display:grid; place-items:center;
+  border-bottom:1px solid var(--border);
+  overflow:hidden;
+  background:url("../assets/hero-poster.jpg") center/cover no-repeat;
 }
-
-
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.35) 0%,
-    rgba(0, 0, 0, 0.1) 40%,
-    rgba(0, 0, 0, 0.4) 100%
-  ); /* dark edges for depth */
-  z-index: 1;
+.hero-video{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  object-position:center -10%;
+  filter:contrast(1.05) saturate(1.15) brightness(0.95);
+  transform:scale(1.05);
 }
-
-.hero-copy {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 4rem 1rem;
-  max-width: 800px;
-  color: #fff; /* ensure text is visible over video */
+.hero::before{
+  content:"";
+  position:absolute; inset:0;
+  background:linear-gradient(180deg,
+    rgba(0,0,0,.35) 0%,
+    rgba(0,0,0,.10) 40%,
+    rgba(0,0,0,.40) 100%);
+  z-index:1;
 }
-
-.hero-copy h1 {
-  font-family: "Bodoni Moda", serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-
+.hero-copy{
+  position:relative; z-index:2;
+  text-align:center;
+  padding:4rem 1rem;
+  max-width:800px;
+  color:#fff;
 }
-
-.hero-copy p {
-  font-size: 1.2rem;
+.hero-copy h1{
+  font-family:"Bodoni Moda", serif;
+  font-optical-sizing:auto;
+  font-weight:400;
+  font-style:normal;
 }
+.hero-copy p{ font-size:1.2rem; }
 
-@media (prefers-reduced-motion: reduce){ .hero-video{display:none} }
-
-.btn{display:inline-block; background:var(--brand); color:#fff; padding:.8rem 1.1rem; border-radius:999px; font-weight:600; border:1px solid transparent; transition:transform .15s ease, box-shadow .15s ease}
-.btn:hover{transform:translateY(-1px); box-shadow:var(--shadow)}
-.btn.ghost{background:transparent; color:var(--brand); border-color:var(--brand)}
-.btn.small{padding:.5rem .8rem; font-size:.9rem}
-.hero-actions{display:flex; gap:.75rem; justify-content:center; margin-top:1rem}
-
-.split{display:flex; justify-content:space-between; align-items:end; gap:2rem}
-.text-link{align-self:flex-end; border-bottom:1px solid var(--ink)}
-
-.card-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:1rem}
-.card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; display:flex; flex-direction:column; transition:transform .15s ease, box-shadow .15s ease}
-.card:hover{transform:translateY(-2px); box-shadow:var(--shadow)}
-.card>div{padding:1rem}
-
-.industry-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:1rem}
-.industry-card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; display:grid; grid-template-columns: 1.2fr 1fr}
-.industry-body{padding:1rem 1.2rem}
-.industry-body h2{ font-family: "Playfair Display", serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: normal;
-
-
+/* Buttons */
+.btn{
+  display:inline-block;
+  background:var(--brand);
+  color:#fff;
+  padding:.8rem 1.1rem;
+  border-radius:999px;
+  font-weight:600;
+  border:1px solid transparent;
+  transition:transform .15s ease, box-shadow .15s ease;
 }
-.industry-body p{margin-bottom:.8rem}
+.btn:hover{ transform:translateY(-1px); box-shadow:var(--shadow); }
+.btn.ghost{ background:transparent; color:var(--brand); border-color:var(--brand); }
+.btn.small{ padding:.5rem .8rem; font-size:.9rem; }
+.hero-actions{ display:flex; gap:.75rem; justify-content:center; margin-top:1rem; }
 
-.clients-rows .row{display:grid; grid-template-columns:repeat(4, 1fr); gap:1.2rem; padding:1rem 0; border-bottom:1px solid var(--border)}
-.clients-rows .row:last-child{border-bottom:none}
-.clients-rows figure{margin:0; background:#fff; border:1px solid var(--border); border-radius:12px; padding:1rem; display:grid; place-items:center; gap:.5rem}
-.clients-rows figcaption{text-align:center; font-size:.85rem}
-.cap{color:var(--muted); font-size:.8rem}
+/* Split layout */
+.split{ display:flex; justify-content:space-between; align-items:end; gap:2rem; }
+.text-link{ align-self:flex-end; border-bottom:1px solid var(--ink); }
 
-.platform-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:1rem}
-.platform{background:#fff; border:1px solid var(--border); border-radius:12px; padding:1rem; display:grid; place-items:center}
-.platform .cap{margin-top:.4rem}
-
-.about-split{display:grid; grid-template-columns: 1fr 1fr; gap:1rem; align-items:center}
-.framed{border:1px solid var(--border); background:#f7f1e7; padding:1rem; border-radius:16px}
-
-.form.card{background:#fff; border:1px solid var(--border); border-radius:var(--radius-lg); padding:1rem}
-.grid-2{display:grid; grid-template-columns:1fr 1fr; gap:1rem}
-label{display:grid; gap:.4rem; font-size:.95rem}
-input, select, textarea{padding:.7rem .8rem; border:2px solid #b8c7ff; border-radius:12px; background:#fff} /* blue outlines like Figma */
-input:focus, select:focus, textarea:focus{outline:2px solid var(--accent)}
-
-.contact-wrap{display:grid; grid-template-columns: 1.2fr 1fr; gap:1rem; align-items:start}
-.contact-image{border:1px solid var(--border); border-radius:12px}
-
-.site-footer{margin-top:4rem; border-top:1px solid var(--border); background:#efe8dd}
-.footer-grid{display:grid; grid-template-columns:2fr 1fr 1fr; gap:1rem; align-items:start}
-.footer-grid nav{display:grid; gap:.4rem}
-
-@media (max-width: 1000px){
-  .card-grid{grid-template-columns:1fr 1fr}
-  .platform-grid{grid-template-columns:repeat(3, 1fr)}
-  .clients-rows .row{grid-template-columns:repeat(3, 1fr)}
+/* Cards & Grids */
+.card-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:1rem; }
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  overflow:hidden;
+  display:flex; flex-direction:column;
+  transition:transform .15s ease, box-shadow .15s ease;
+  min-width:0;
 }
-@media (max-width: 800px){
-  .split{flex-direction:column; align-items:flex-start}
-  .industry-grid{grid-template-columns:1fr}
-  .about-split{grid-template-columns:1fr}
-  .grid-2{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr}
-  .platform-grid{grid-template-columns:repeat(2, 1fr)}
-  .clients-rows .row{grid-template-columns:repeat(2, 1fr)}
-  .contact-wrap{grid-template-columns:1fr}
-}
+.card:hover{ transform:translateY(-2px); box-shadow:var(--shadow); }
+.card>div{ padding:1rem; }
 
-/* --- Contact page: make image and form the same height --- */
-.contact-wrap{
-  display:grid;
-  grid-template-columns: 1.2fr 1fr;      /* image | form */
-  gap:1.25rem;
-  align-items: stretch;                  /* <— key: equal column heights */
-  /* Optional: lock the overall block to a cinematic height similar to Figma */
-  /* min-height: clamp(420px, 52vh, 560px); */
-}
-
-.contact-image{
-  width:100%;
-  height:100% !important;                /* override the global img{height:auto} */
-  object-fit:cover;                      /* crop nicely */
-  border-radius:12px;
-  display:block;
-}
-
-.form.card{
-  height:100%;                           /* match the image column */
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-  padding:1.25rem;
-  border-radius:12px;
-}
-
-/* First/last name row with tidy gap */
-.form.card .grid-2{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-
-/* Uniform control sizing for clean alignment */
-.form.card input,
-.form.card select{
-  height:44px;
-}
-
-.form.card textarea{
-  min-height:140px;                      /* reduce if the card is taller than the image */
-  resize:vertical;
-}
-
-/* Keep the Submit button aligned to the bottom edge */
-.form.card .btn{
-  margin-top:auto;
-  align-self:stretch;
-}
-
-/* Mobile stacking like your Figma */
-@media (max-width: 800px){
-  .contact-wrap{ grid-template-columns:1fr; }
-  .contact-image{ height:260px !important; }  /* fixed when stacked */
-}
-
-.industry-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 columns */
-  gap: 20px; /* spacing between cards */
-}
-
-.industry-card {
-  display: flex;
-  flex-direction: row;
-  height: 250px; /* make all cards same height */
-  background: white;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.industry-card img {
-  width: 50%;
-  height: 100%;
-  object-fit: cover; /* makes image fill height without distortion */
-}
-
-.industry-card-content {
-  padding: 20px;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.industry-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 columns */
-  gap: 20px; /* spacing between cards */
-}
-
-.industry-card {
-  display: flex;
-  flex-direction: row;
-  height: 250px; /* make all cards same height */
-  background: white;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.industry-card img {
-  width: 50%;
-  height: 100%;
-  object-fit: cover; /* makes image fill height without distortion */
-}
-
-.industry-card-content {
-  padding: 20px;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.about-split p {
-  font-family: "Outfit", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-  font-size: 20PX;
-
-}
-
-/* ===== ABOUT: match Figma layout ===== */
-
-/* Section heading & divider like the screenshot */
-
-
-/* Outer frame lines above and below the block (like the long hairline in Figma) */
-.about-section-lines {
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding-top: 12px;        /* room for the hairline above the cards */
-  padding-bottom: 12px;
-}
-
-/* The split block itself */
-.about-split.about-frame{
-  /* full-width card with no internal gap so image & panel touch */
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;   /* image | text panel ratio from Figma */
-  align-items: stretch;
-  gap: 0;
-  border: none;                       /* remove old framed border */
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-/* Left image fills the card height */
-.about-split.about-frame > img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* Right panel: tan background, generous padding, vertically centered text */
-.about-panel{
-  background: #efe8dd;                /* Figma panel color */
-  border-left: 1px solid var(--border);
-  padding: 28px 32px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 12px;
-  min-height: 360px;                  /* ensures equal/harmonized height on desktop */
-}
-
-/* Paragraph font inside panel */
-.about-intro{
-  /* pick ONE of these; comment the other out */
-  /* Use a contrasting serif (Figma-like): */
-  font-family: "Lora", serif;
-  /* Or reuse brand serif:
-  font-family: "Bodoni Moda", serif;
-  */
-  font-size: 1.05rem;
-  line-height: 1.8;
-  margin: 0 0 .75rem;
-  color: var(--ink);
-}
-
-/* List spacing inside panel */
-.about-panel ul{
-  margin: 0; padding-left: 1.1rem;
-}
-.about-panel li{
-  margin: .25rem 0;
-}
-
-/* Mobile stack: image on top, panel below, consistent crop */
-@media (max-width: 900px){
-  .about-split.about-frame{
-    grid-template-columns: 1fr;
-    border-radius: 12px;
-  }
-  .about-split.about-frame > img{
-    height: auto;
-    aspect-ratio: 16 / 9;             /* keeps a pleasing crop when stacked */
-  }
-  .about-panel{
-    min-height: unset;
-    padding: 20px 18px;
-  }
-}
-
-/* Clients: normalize logo box + caption stack */
-.clients-rows .row{
-  display:grid;
-  grid-template-columns:repeat(4, 1fr);
-  gap:16px;
-  align-items:stretch;              /* make every figure same height in the row */
-}
-
-.clients-rows figure{
-  margin:0;
+/* Industry grid/cards (for two-column tiles) */
+.industry-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:20px; }
+.industry-card{
+  display:flex; flex-direction:row;
+  height:250px;
   background:#fff;
   border:1px solid var(--border);
-  border-radius:12px;
-  padding:14px 12px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-start;
-  gap:10px;
-  min-height:150px;                 /* uniform tile height */
+  border-radius:10px;
+  overflow:hidden;
+}
+.industry-card img{ width:50%; height:100%; object-fit:cover; }
+.industry-card-content{
+  padding:20px; width:50%;
+  display:flex; flex-direction:column; justify-content:center;
 }
 
-/* Give every logo a consistent slot height */
-.clients-rows figure img{
-  max-width:100%;
-  max-height:48px;                  /* <— controls visual logo size */
-  object-fit:contain;
-  display:block;
+/* Legacy/semantic industry section */
+.industry-body{ padding:1rem 1.2rem; }
+.industry-body h2{
+  font-family:"Playfair Display", serif;
+  font-optical-sizing:auto;
+  font-weight:500;
+  font-style:normal;
 }
+.industry-body p{ margin-bottom:.8rem; }
 
-/* Treat caption as a 2-line stack even with <br> */
+/* Platform grid (base) */
+.platform-grid{ display:grid; grid-template-columns:repeat(4, 1fr); gap:16px; }
+
+/* ========== 5) SECTIONS ========== */
+
+/* About */
+.about-split{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; align-items:center; }
+.framed{ border:1px solid var(--border); background:#f7f1e7; padding:1rem; border-radius:16px; }
+
+.about-section-lines{
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding-top:12px; padding-bottom:12px;
+}
+.about-split.about-frame{
+  display:grid; grid-template-columns:1.3fr 1fr;
+  align-items:stretch; gap:0;
+  border:none; border-radius:12px; overflow:hidden;
+}
+.about-split.about-frame>img{ width:100%; height:100%; object-fit:cover; display:block; }
+.about-panel{
+  background:#efe8dd; border-left:1px solid var(--border);
+  padding:28px 32px;
+  display:flex; flex-direction:column; justify-content:center; gap:12px;
+  min-height:360px;
+}
+.about-intro{
+  font-family:"Lora", serif; /* or Bodoni Moda if you prefer */
+  font-size:1.05rem; line-height:1.8; margin:0 0 .75rem; color:var(--ink);
+}
+.about-panel ul{ margin:0; padding-left:1.1rem; }
+.about-panel li{ margin:.25rem 0; }
+
+/* Clients (unified with Platform) */
+.clients-rows .row{
+  display:grid; grid-template-columns:repeat(4, 1fr);
+  gap:16px; align-items:stretch;
+}
+.clients-rows figure{
+  margin:0; background:#fff; border:1px solid var(--border);
+  border-radius:12px; padding:14px 12px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:10px; min-height:150px;
+}
+.clients-rows figure img{ max-width:100%; max-height:56px; object-fit:contain; display:block; }
 .clients-rows figure figcaption{
-  text-align:center;
-  line-height:1.2;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:4px;
-  min-height: 2.6em;                /* reserves space so rows don’t jump */
+  text-align:center; line-height:1.2;
+  display:flex; flex-direction:column; align-items:center; gap:4px;
+  min-height:2.6em; font-size:.95rem;
+}
+.clients-rows figure .cap{ display:block; font-size:.8rem; color:var(--muted); }
+
+/* Platform — identical tiles to Clients */
+.platform-grid>*{
+  background:#fff; border:1px solid var(--border);
+  border-radius:12px; padding:14px 12px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:10px; min-height:150px;
+}
+.platform-grid>* img{ max-width:100%; max-height:56px; object-fit:contain; display:block; }
+.platform-grid>* figcaption{
+  text-align:center; line-height:1.2;
+  display:flex; flex-direction:column; align-items:center; gap:4px;
+  min-height:2.6em; font-size:.95rem;
+}
+.platform-grid>* .cap{ font-size:.8rem; color:var(--muted); }
+
+/* Contact */
+.form.card{
+  background:#fff; border:1px solid var(--border);
+  border-radius:var(--radius-lg); padding:1rem;
+}
+.grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+label{ display:grid; gap:.4rem; font-size:.95rem; }
+input, select, textarea{
+  padding:.7rem .8rem; border:2px solid #b8c7ff; border-radius:12px; background:#fff;
+}
+input:focus, select:focus, textarea:focus{ outline:2px solid var(--accent); }
+
+.contact-wrap{
+  display:grid; grid-template-columns:1.2fr 1fr;
+  gap:1.25rem; align-items:stretch;
+}
+.contact-image{
+  width:100%; height:100% !important; object-fit:cover;
+  border-radius:12px; display:block;
 }
 
-/* Make the small line truly small and aligned */
-.clients-rows figure .cap{
-  display:block;                    /* ensure it’s its own line */
-  font-size:.8rem;
-  color:var(--muted);
+/* Footer */
+.site-footer{ margin-top:4rem; border-top:1px solid var(--border); background:#efe8dd; }
+.footer-grid{ display:grid; grid-template-columns:2fr 1fr 1fr; gap:1rem; align-items:start; }
+.footer-grid nav{ display:grid; gap:.4rem; }
+
+/* ========== 6) PAGE-SPECIFIC TWEAKS (TYPOGRAPHY PARITY) ========== */
+/* About page paragraph look */
+.about-split p{
+  font-family:"Outfit", sans-serif;
+  font-optical-sizing:auto;
+  font-weight:300;
+  font-style:normal;
+  font-size:20px;
 }
 
-/* Responsive */
-@media (max-width:1000px){
-  .clients-rows .row{ grid-template-columns:repeat(3, 1fr) }
-}
-@media (max-width:700px){
-  .clients-rows .row{ grid-template-columns:repeat(2, 1fr) }
+/* Industry detail page paragraphs use Outfit */
+.industry-body p{
+  font-family:"Outfit", sans-serif;
+  font-optical-sizing:auto;
+  font-weight:300;
+  font-style:normal;
 }
 
-.industry-body p {
-  font-family: "Outfit", sans-serif;
+/* Index tiles & 2-col industry tiles: body copy = Outfit 300 */
+.card-grid .card > div p,
+.industry-grid .card > div p,
+.industry-card-content p{
+  font-family:"Outfit", sans-serif;
+  font-weight:300;
+  font-style:normal;
+}
+
+/* Ensure card headings remain Playfair (explicit for clarity) */
+.card-grid .card > div h3,
+.industry-grid .card > div h3,
+.industry-card-content h3{
+  font-family: "Playfair Display", serif;
   font-optical-sizing: auto;
-  font-weight: 300;
+  font-size: clamp(1rem, 1vw + 0.85rem, 1.5rem); /* min, preferred, max */
+  font-weight: 500;
   font-style: normal;
+}
+
+/* ========== 7) RESPONSIVE BREAKPOINTS ========== */
+
+/* <= 1000px */
+@media (max-width:1000px){
+  .card-grid{ grid-template-columns:1fr 1fr; }
+  .platform-grid{ grid-template-columns:repeat(3, 1fr); }
+  .clients-rows .row{ grid-template-columns:repeat(3, 1fr); }
+}
+
+/* <= 900px */
+@media (max-width:900px){
+  .about-split.about-frame{ grid-template-columns:1fr; border-radius:12px; }
+  .about-split.about-frame>img{ height:auto; aspect-ratio:16 / 9; }
+  .about-panel{ min-height:unset; padding:20px 18px; }
+}
+
+/* <= 800px */
+@media (max-width:800px){
+  .nav-toggle{ display:block; }
+  .site-nav{
+    display:none; flex-direction:column;
+    position:absolute; right:1rem; top:64px;
+    background:var(--bg); padding:1rem;
+    border:1px solid var(--border); border-radius:12px; box-shadow:var(--shadow);
+  }
+  .site-nav.open{ display:flex; }
+
+  .split{ flex-direction:column; align-items:flex-start; }
+
+  .industry-grid{ grid-template-columns:1fr; }
+  .about-split{ grid-template-columns:1fr; }
+  .grid-2{ grid-template-columns:1fr; }
+  .footer-grid{ grid-template-columns:1fr; }
+  .platform-grid{ grid-template-columns:repeat(2, 1fr); }
+  .clients-rows .row{ grid-template-columns:repeat(2, 1fr); }
+
+  .contact-wrap{ grid-template-columns:1fr; }
+  .contact-image{ height:260px !important; }
+}
+
+/* <= 700px */
+@media (max-width:700px){
+  .platform-grid,
+  .clients-rows .row{ grid-template-columns:repeat(2, 1fr); }
+}
+
+/* ========== 8) PREFERENCE QUERIES ========== */
+@media (prefers-reduced-motion: reduce){
+  .hero-video{ display:none; }
+}
+
+@media (max-width: 800px){
+  .site-header{ align-items: center; }
+  .nav-toggle{
+    display: block;       /* you already have this */
+    margin-left: auto;    /* <-- pushes it to the right edge */
+  }
 }

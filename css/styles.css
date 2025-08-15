@@ -171,7 +171,12 @@ label{display:grid; gap:.4rem; font-size:.95rem}
 input, select, textarea{padding:.7rem .8rem; border:2px solid #b8c7ff; border-radius:12px; background:#fff} /* blue outlines like Figma */
 input:focus, select:focus, textarea:focus{outline:2px solid var(--accent)}
 
-.contact-wrap{display:grid; grid-template-columns: 1.2fr 1fr; gap:1rem; align-items:start}
+.contact-wrap{
+  display:grid;
+  grid-template-columns: 1.2fr 1fr;      /* image | form */
+  gap:1.25rem;
+  align-items:stretch;                   /* equal column heights */
+}
 .contact-image{border:1px solid var(--border); border-radius:12px}
 
 .site-footer{margin-top:4rem; border-top:1px solid var(--border); background:#efe8dd}
@@ -192,17 +197,10 @@ input:focus, select:focus, textarea:focus{outline:2px solid var(--accent)}
   .platform-grid{grid-template-columns:repeat(2, 1fr)}
   .clients-rows .row{grid-template-columns:repeat(2, 1fr)}
   .contact-wrap{grid-template-columns:1fr}
+  .contact-image{height:auto !important; aspect-ratio:16/9;}
 }
 
 /* --- Contact page: make image and form the same height --- */
-.contact-wrap{
-  display:grid;
-  grid-template-columns: 1.2fr 1fr;      /* image | form */
-  gap:1.25rem;
-  align-items: stretch;                  /* <— key: equal column heights */
-  /* Optional: lock the overall block to a cinematic height similar to Figma */
-  /* min-height: clamp(420px, 52vh, 560px); */
-}
 
 .contact-image{
   width:100%;
@@ -243,12 +241,6 @@ input:focus, select:focus, textarea:focus{outline:2px solid var(--accent)}
 .form.card .btn{
   margin-top:auto;
   align-self:stretch;
-}
-
-/* Mobile stacking like your Figma */
-@media (max-width: 800px){
-  .contact-wrap{ grid-template-columns:1fr; }
-  .contact-image{ height:auto !important; aspect-ratio:16/9; }  /* maintain 16:9 crop when stacked */
 }
 
 .industry-grid {

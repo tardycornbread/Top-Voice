@@ -248,7 +248,7 @@ input:focus, select:focus, textarea:focus{outline:2px solid var(--accent)}
 /* Mobile stacking like your Figma */
 @media (max-width: 800px){
   .contact-wrap{ grid-template-columns:1fr; }
-  .contact-image{ height:260px !important; }  /* fixed when stacked */
+  .contact-image{ height:auto !important; aspect-ratio:16/9; }  /* maintain 16:9 crop when stacked */
 }
 
 .industry-grid {

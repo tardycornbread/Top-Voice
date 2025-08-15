@@ -61,7 +61,7 @@ img{max-width:100%; height:auto; display:block}
 
 @media (max-width: 800px){
   .nav-toggle{display:block}
-  .site-nav{display:none; flex-direction:column; position:absolute; right:1rem; top:100%; background:var(--bg); padding:1rem; border:1px solid var(--border); border-radius:12px; box-shadow:var(--shadow)}
+  .site-nav{display:none; flex-direction:column; position:absolute; right:1rem; top:64px; background:var(--bg); padding:1rem; border:1px solid var(--border); border-radius:12px; box-shadow:var(--shadow)}
   .site-nav.open{display:flex}
 }
 
@@ -71,8 +71,7 @@ img{max-width:100%; height:auto; display:block}
   
 .hero {
   position: relative;
-  min-height: 100vh; /* full screen height fallback */
-  min-height: 100svh; /* full screen height */
+  height: 100vh; /* full screen height */
   display: grid;
   place-items: center;
   border-bottom: 1px solid var(--border);
@@ -151,6 +150,7 @@ img{max-width:100%; height:auto; display:block}
 
 
 }
+.industry-body p{margin-bottom:.8rem}
 
 .clients-rows .row{display:grid; grid-template-columns:repeat(4, 1fr); gap:1.2rem; padding:1rem 0; border-bottom:1px solid var(--border)}
 .clients-rows .row:last-child{border-bottom:none}
@@ -171,12 +171,7 @@ label{display:grid; gap:.4rem; font-size:.95rem}
 input, select, textarea{padding:.7rem .8rem; border:2px solid #b8c7ff; border-radius:12px; background:#fff} /* blue outlines like Figma */
 input:focus, select:focus, textarea:focus{outline:2px solid var(--accent)}
 
-.contact-wrap{
-  display:grid;
-  grid-template-columns: 1.2fr 1fr;      /* image | form */
-  gap:1.25rem;
-  align-items:stretch;                   /* equal column heights */
-}
+.contact-wrap{display:grid; grid-template-columns: 1.2fr 1fr; gap:1rem; align-items:start}
 .contact-image{border:1px solid var(--border); border-radius:12px}
 
 .site-footer{margin-top:4rem; border-top:1px solid var(--border); background:#efe8dd}
@@ -197,10 +192,17 @@ input:focus, select:focus, textarea:focus{outline:2px solid var(--accent)}
   .platform-grid{grid-template-columns:repeat(2, 1fr)}
   .clients-rows .row{grid-template-columns:repeat(2, 1fr)}
   .contact-wrap{grid-template-columns:1fr}
-  .contact-image{height:auto !important; aspect-ratio:16/9;}
 }
 
 /* --- Contact page: make image and form the same height --- */
+.contact-wrap{
+  display:grid;
+  grid-template-columns: 1.2fr 1fr;      /* image | form */
+  gap:1.25rem;
+  align-items: stretch;                  /* <— key: equal column heights */
+  /* Optional: lock the overall block to a cinematic height similar to Figma */
+  /* min-height: clamp(420px, 52vh, 560px); */
+}
 
 .contact-image{
   width:100%;
@@ -243,6 +245,12 @@ input:focus, select:focus, textarea:focus{outline:2px solid var(--accent)}
   align-self:stretch;
 }
 
+/* Mobile stacking like your Figma */
+@media (max-width: 800px){
+  .contact-wrap{ grid-template-columns:1fr; }
+  .contact-image{ height:260px !important; }  /* fixed when stacked */
+}
+
 .industry-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 2 columns */
@@ -252,7 +260,7 @@ input:focus, select:focus, textarea:focus{outline:2px solid var(--accent)}
 .industry-card {
   display: flex;
   flex-direction: row;
-  min-height: 250px; /* minimum card height */
+  height: 250px; /* make all cards same height */
   background: white;
   border-radius: 10px;
   overflow: hidden;
@@ -281,7 +289,7 @@ input:focus, select:focus, textarea:focus{outline:2px solid var(--accent)}
 .industry-card {
   display: flex;
   flex-direction: row;
-  min-height: 250px; /* minimum card height */
+  height: 250px; /* make all cards same height */
   background: white;
   border-radius: 10px;
   overflow: hidden;
@@ -299,12 +307,6 @@ input:focus, select:focus, textarea:focus{outline:2px solid var(--accent)}
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-@media (max-width: 800px) {
-  .industry-card {
-    flex-direction: column;
-  }
 }
 
 .about-split p {
@@ -312,7 +314,7 @@ input:focus, select:focus, textarea:focus{outline:2px solid var(--accent)}
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
-  font-size: clamp(1rem, 2vw + 0.5rem, 1.25rem);
+  font-size: 20PX;
 
 }
 
@@ -456,7 +458,6 @@ input:focus, select:focus, textarea:focus{outline:2px solid var(--accent)}
 }
 
 .industry-body p {
-  margin-bottom:.8rem;
   font-family: "Outfit", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;

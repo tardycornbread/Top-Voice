@@ -15,11 +15,6 @@ if (navToggle) {
 $$('.site-nav a').forEach(a => {
   const here = location.pathname.split('/').pop() || 'index.html';
   if (a.getAttribute('href') === here) a.classList.add('active');
-
-  a.addEventListener('click', () => {
-    siteNav.classList.remove('open');
-    if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
-  });
 });
 
 // Prefill interest → contact page
